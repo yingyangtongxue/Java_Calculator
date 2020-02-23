@@ -23,6 +23,10 @@ public class Calculator extends javax.swing.JFrame {
     
     public void enable(){
         jTextField1.setEnabled(true);
+        
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(true);
+        
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
         jButton3.setEnabled(true);
@@ -46,7 +50,10 @@ public class Calculator extends javax.swing.JFrame {
     
     public void disable(){
         jTextField1.setEnabled(false);
-        jRadioButton1.setEnabled(true);
+        
+        jRadioButton1.setEnabled(true); 
+        jRadioButton2.setEnabled(false);
+        
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
@@ -129,6 +136,11 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jButton1.setText("<--");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         jButton2.setText("C");
@@ -430,6 +442,19 @@ public class Calculator extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         enable(); //call enable method
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int length = jTextField1.getText().length();
+        int number = jTextField1.getText().length()-1;
+        String store;
+        
+        if(length > 0){
+            StringBuilder back = new StringBuilder(jTextField1.getText());
+            back.deleteCharAt(number);
+            store = back.toString();
+            jTextField1.setText(store);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
